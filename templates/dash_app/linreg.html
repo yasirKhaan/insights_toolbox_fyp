@@ -1,0 +1,50 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {%  include 'dash_app/insights_navbar.html' %}
+<h1>Linear Regression Algorithm Configuration</h1>
+<table class="table" border="2">
+    <tr>
+        <td>
+            {% for data_heads in data_headers %}
+            <b>{{data_heads}}</b>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% for data_rows in data_head %}
+                {{data_rows}}<br><br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">SAT = Independent Variable</h1>
+            <h1 style="font-size:20px">GPA = Dependent Variable</h1>
+            {% for i in features %}
+                {{i}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Data Reshaped</h1>
+            {{data_dim}}
+            <h1 style="font-size:20px">R-Squarred Value</h1>
+            {{rsq_value}}
+            <h1 style="font-size:20px">Intercept Value</h1>
+            {{intercept}}
+            <h1 style="font-size:20px">NewData</h1>
+            {{lin_reg_new_data_pred}}
+            <h1 style="font-size:20px">Prediction</h1>
+            {{lin_reg_prediction}}
+        </td>
+    </tr>
+</table>
+</body>
+</html>

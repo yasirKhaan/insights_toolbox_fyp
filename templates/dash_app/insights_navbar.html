@@ -1,0 +1,85 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Navbar</title>
+</head>
+
+<style>
+.logo-img img{
+    width:150px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*margin:2px 2px;*/
+}
+i.fa {
+    font-size: 30px;
+    color:white;
+}
+.nav-center ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    padding: 0;
+    justify-content: space-between;
+}
+.nav-center ul li{
+    width:10%;
+    margin: 0 20px;
+}
+.nav-center {
+    width: 100%;
+}
+.navbar{
+    background-color: black;
+}
+i.fa-bars{
+    margin-right: 10px;
+}
+.main{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+</style>
+<body>
+    <nav class="navbar">
+        <div class="main">
+          <div class="nav-left">
+            <a href="" class="logo-img"><img src="{% static 'images/fyp_logo.jpeg' %}" alt="The Insights Toolbox"></a>
+<!--            <a href="" class="logo-img"><img src="the-insights-toolbox.jpeg" alt="The Insights Toolbox"></a>-->
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="{% url 'connect' %}"><i class="fa fa-database"></i></a></li>
+                <li><a href="{% url 'analyze' %}"><i class="fa fa-search-plus"></i></a></li>
+                <li><a href="{% url 'dashboard' %}"><i class="fa fa-desktop"></i></a></li>
+                <li><a href=""><i class="fa fa-clipboard-list"></i></a></li>
+                <li><a href=""><i class="fa fa-bell"></i></a></li>
+                <li><a href="{% url 'linreg' %}"><i class="fa fa-chart-line"></i></a></li>
+                <li><a href="{% url 'logisreg' %}"><i class="fa fa-chart-line"></i></a></li>
+            </ul>
+        </div>
+        </div>
+        
+        <div>
+            <span class="hello-msg"><font color="white">Hello, {{request.user}}</font></span>&nbsp; &nbsp; &nbsp;
+            <span><a class="hello-msg" href="{% url 'logout' %}"><font color="white">Logout</font></a></span>
+        </div>
+      </nav>
+
+
+
+</body>
+
+</html>

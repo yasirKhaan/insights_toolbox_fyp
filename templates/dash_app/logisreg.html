@@ -1,0 +1,84 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {%  include 'dash_app/insights_navbar.html' %}
+<h1>Logistic Regression Algorithm Configuration</h1>
+<table class="table" border="2">
+    <tr>
+        <td>
+            {% for data_heads in data_headers %}
+            <b>{{data_heads}}</b>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% for data_rows in data_head %}
+                {{data_rows}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <h1 style="font-size:20px">Time To Amount = Independent Variable</h1>
+                <h1 style="font-size:20px">Class = Dependent Variable</h1>
+                {% for feature in features %}
+                {{feature}}<br>
+                {% endfor %}
+            </td>
+        </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Data Dimensions</h1>
+            {% for dim in data_dim %}
+            {{dim}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Null Values On Each Column</h1>
+            {% for null in nullable %}
+            {{null}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Train Test Ratio For xTrain, xTest, yTrain, yTest Respectively</h1>
+            {% for data in train_data %}
+            {{data}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Prediction Based On yTest</h1>
+            {% for pred in predict %}
+            {{pred}}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <h1 style="font-size:25px">Model Evaluation</h1>
+        <td>
+            <h1 style="font-size:20px">Confusion Matrix</h1>
+            {% for mat in matrix %}
+            {{mat}}<br>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="font-size:20px">Accuracy</h1>
+            <p>Model Accuracy is <b>{{accuracy}} </b></p><br>
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>
