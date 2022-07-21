@@ -1,0 +1,74 @@
+{% load static %}
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <title>ALARM MANAGE</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<!-- ` -->
+  {%  include 'dash_app/insights_navbar.html' %}
+
+
+        <div class="container" style="display: flex;margin-top: 50px;flex-direction: column; gap: 30px;">
+          <center>
+            <h1>
+              ALARM MANAGEMENT
+          </h1>
+          </center>
+            <div>
+
+
+                <a href="{% url 'admin_dashboard' %}"><button class="btn btn-primary" >BACK</button></a>
+            </div>
+
+            <div class="row">
+    <div class="col">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">DATASOURCE</th>
+            <th scope="col">TABLE</th>
+            <th scope="col">COLUMN</th>
+            <th scope="col">MAX</th>
+            <th scope="col">MIN</th>
+            <th scope="col">ACTION</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for list in list %}
+          <tr>
+            <th scope="row">{{ list.id }}</th>
+            <td>{{ list.title }}</td>
+            <td>{{ list.data_source }}</td>
+            <td>{{ list.table_name }}</td>
+            <td>{{ list.column_name }}</td>
+            <td>{{ list.max }}</td>
+            <td>{{ list.min }}</td>
+
+            <td>
+
+
+              <a class="btn btn-danger" href="{% url 'delete' list.id %}"> Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
