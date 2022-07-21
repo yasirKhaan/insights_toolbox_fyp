@@ -1,0 +1,84 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style>
+
+.logo-img img{
+    width:150px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:25px 15px;
+}
+i.fa {
+    font-size: 30px;
+    color:white;
+}
+.nav-center ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    padding: 0;
+    justify-content: space-between;
+}
+.nav-center ul li{
+    width:10%;
+    margin: 0 20px;
+}
+.nav-center {
+    width: 100%;
+}
+.navbar{
+    background-color: black;
+}
+i.fa-bars{
+    margin-right: 10px;
+}
+.main{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+
+  </style>
+</head>
+<body>
+{%  include 'dash_app/insights_navbar.html' %}
+
+{% if request.user.username == 'khurram' %}
+  <center><h1 style="font-weight: bold;">DASHBOARD</h1></center>
+  <div id="summernote">
+
+  </div>
+
+  {% for i in graph %}
+    {{ i.plot | safe }}
+  {% endfor %}
+
+
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+
+{% elif request.user.username != 'khurram' %}
+<h1>Your Group Is Not Allowed To VIEW DASHBOARD</h1>
+{% endif %}
+
+</body>
+</html>
