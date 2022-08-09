@@ -1,0 +1,63 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ANALYZE</title>
+    <style>
+                body{
+            font-family:helvetica;
+        }
+        h1
+        {
+            text-align:center;
+            font-size:35px;
+            margin-top:60px;
+            color:#BEF781;
+        }
+        h1 p
+        {
+            text-align:center;
+            margin:0px;
+            font-size:18px;
+            text-decoration:underline;
+            color:white;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div>
+                <form enctype="multipart/form-data" method="post" action=".">
+                    {% csrf_token %}
+                    <h1 >EXCEL DATA FORM </h1>
+                    <label for="excel_file">Select a file:</label>
+                    <input type="file" id="excel_file" name="excel_file"><br><br>
+                    
+                    <label for="excel_sheet">Enter Excel Sheet Name:</label>
+                    <input type="text" id="excel_sheet" name="excel_sheet"><br><br>
+
+                    <label for="excel_table_title">Enter Table Name:</label>
+                    <input type="text" id="excel_table_title" name="excel_table_title"><br><br>
+
+                    <label for="excel_table_schema_user_defined">Enter Schema Name:</label>
+                    <input type="text" id="excel_table_schema_user_defined" name="excel_table_schema_user_defined">
+                    <br>
+                    <br>
+                    
+                    <label for="contain_header">Contains Header?</label>
+                    <select name="contain_header" id="contain_header" class="form-select">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <button type="submit">Create Tables</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>
+  

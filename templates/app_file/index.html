@@ -1,0 +1,58 @@
+
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>ANALYZE</title>
+      <style>
+                body{
+            font-family:helvetica;
+        }
+        h1
+        {
+            text-align:center;
+            font-size:35px;
+            margin-top:60px;
+            color:#BEF781;
+        }
+        h1 p
+        {
+            text-align:center;
+            margin:0px;
+            font-size:18px;
+            text-decoration:underline;
+            color:white;
+        }
+      </style>
+      </head>
+      <body>
+        <div>
+          <div>
+            <form enctype="multipart/form-data" method="post" action=".">
+              {% csrf_token %}
+              <h1>Mongo DB Data Form </h1>
+              <label for="myfile">Select a file:</label>
+              <input type="file" id="myfile" name="myfile"><br><br>
+
+              <label for="table_title">Enter Table Name:</label>
+              <input type="text" id="table_title" name="table_title"><br><br>
+    
+              <label for="table_schema_user_defined">Enter Schema Name:</label>
+              <input type="text" id="table_schema_user_defined" name="table_schema_user_defined">
+              <br>
+              <br>
+              
+              <button type="submit">Upload File</button>
+            </form>
+          </div>
+          <div>
+            <p>
+              Warning:
+              Your Table Create Query Should Not Contain word go, It will raise an error, although script will still execute smoothly and 
+              all tables will create.
+            </p>
+          </div>
+        </div>
+
+  </body>
+  </html>
+  

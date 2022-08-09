@@ -1,0 +1,197 @@
+<style>
+    body {background-color : #ededed; font-family : "Open Sans", sans-serif;}
+
+h1 {padding: 20px; text-align: center; font-size: 1.5em;}
+
+li a {text-decoration : none; color : #2d2f31;}
+
+
+nav {
+    width : 50%; 
+    background: pink;
+    margin : 40px auto; 
+    }
+
+    span {
+    padding : 30px;
+    background : #2d2f31; 
+    color : white;
+    font-size : 1.2em;
+    font-variant : small-caps;
+    cursor : pointer;
+    display: block;
+    }
+
+    span::after {
+    float: right;
+    right: 10%;
+    content: "+";
+    }
+
+    .slide {
+    clear:both;
+    width:100%;
+    height:5px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+    }
+
+    .slide li {padding : 30px;}
+
+    #transfer_schema {position: absolute; opacity: 0; height: 0px;}    
+    #transfer_existing_schema {position: absolute; opacity: 0; height: 0px;}    
+    #insert_or_delete {position: absolute; opacity: 0; height: 0px;}    
+    #drop_table {position: absolute; opacity: 0; height: 0px;}    
+
+    #transfer_schema:checked + .slide {height: 350px;} 
+    #transfer_existing_schema:checked + .slide {height: 350px;} 
+    #insert_or_delete:checked + .slide {height: 400px;} 
+    #drop_table:checked + .slide {height: 400px;} 
+</style>
+
+<h1>CSS Dropdown Menu</h1>
+
+<nav>
+
+    <label for="transfer_schema"><span>Transfer To New Schema</span></label>               
+    <input type="checkbox" id="transfer_schema"> 
+
+    <!-- <ul class="slide">
+    <li><a href="#">Lorem Ipsum</a></li> 
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    </ul> -->
+    <form enctype="multipart/form-data" method="post" action="." class="slide">
+        {% csrf_token %}
+        <h1>Schema Transfer </h1>
+        <label for="old_schema">Old Schema:</label>
+        <input type="text" id="old_schema" name="old_schema" value="None"><br><br>
+        
+        <label for="new_schema">New Schema:</label>
+        <input type="text" id="new_schema" name="new_schema" value="None"><br><br>
+        <br>
+        <br>
+        
+        <button type="submit">Upload File</button>
+    </form>
+</nav> 
+
+<nav>
+
+    <label for="transfer_existing_schema"><span>Transfer To Existing Schema</span></label>               
+    <input type="checkbox" id="transfer_existing_schema"> 
+
+    <form enctype="multipart/form-data" method="post" action="." class="slide">
+        {% csrf_token %}
+        <h1>Schema Transfer To Existing Schema</h1>
+        <label for="existing_schema">Existing Schema:</label>
+        <input type="text" id="existing_schema" name="existing_schema" value="None"><br><br>
+        
+        <label for="present_schema">Present Schema:</label>
+        <input type="text" id="present_schema" name="present_schema" value="None"><br><br>
+        <br>
+        <br>
+        
+        <button type="submit">Upload File</button>
+    </form>
+</nav> 
+
+
+
+<nav>
+
+    <label for="insert_or_delete"><span>Insertion or Deletion</span></label>               
+    <input type="checkbox" id="insert_or_delete"> 
+
+    <!-- <ul class="slide">
+    <li><a href="#">Lorem Ipsum</a></li> 
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    </ul> -->
+    <form enctype="multipart/form-data" method="post" action="." class="slide">
+        {% csrf_token %}
+        <h1>Insert Or Delete Data</h1>
+        <p>Note: your query must contain respective schema name which you mentioned while connection your data sources.</p>
+
+        <p><label for="w3review">SQL Insertion Deletion Query:</label></p>
+        <textarea id="table_create" name="table_create" rows="4" cols="50"></textarea>       
+
+        <!-- <label for="table_title">Enter Table Name:</label>
+        <input type="text" id="table_title" name="table_title"><br><br>
+
+        <label for="table_schema_user_defined">Enter Schema Name:</label>
+        <input type="text" id="table_schema_user_defined" name="table_schema_user_defined"> -->
+        <br>
+        <br>
+        
+        <button type="submit">Upload File</button>
+    </form>
+</nav> 
+
+
+<nav>
+
+    <label for="drop_table"><span>Delete Table(s)</span></label>               
+    <input type="checkbox" id="drop_table"> 
+
+    <!-- <ul class="slide">
+    <li><a href="#">Lorem Ipsum</a></li> 
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    </ul> -->
+    <form enctype="multipart/form-data" method="post" action="." class="slide">
+        {% csrf_token %}
+        <h1>Delete Tables</h1>
+        <p>Note: Before deleting, Keep in mind about the connections between tables to avoid any error.</p>
+
+        <p<label for="table_delete">Table Deletion Query:</label></p>
+        <textarea id="table_delete" name="table_delete" rows="4" cols="50"></textarea>       
+
+        <!-- <label for="table_title">Enter Table Name:</label>
+        <input type="text" id="table_title" name="table_title"><br><br>
+
+        <label for="table_schema_user_defined">Enter Schema Name:</label>
+        <input type="text" id="table_schema_user_defined" name="table_schema_user_defined"> -->
+        <br>
+        <br>
+        
+        <button type="submit">Upload File</button>
+    </form>
+</nav> 
+
+
+
+<!-- <nav>
+
+    <label for="drop_table"><span>Delete Table(s)</span></label>               
+    <input type="checkbox" id="drop_table"> 
+
+    <ul class="slide">
+    <li><a href="#">Lorem Ipsum</a></li> 
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    </ul> 
+    <form enctype="multipart/form-data" method="post" action="." class="slide">
+        {% csrf_token %}
+        <h1>Delete Tables</h1>
+        <p>Note: Before deleting, Keep in mind about the connections between tables to avoid any error.</p>
+
+        <p<label for="table_delete">Table Deletion Query:</label></p>
+        <textarea id="table_delete" name="table_delete" rows="4" cols="50"></textarea>       
+
+        <label for="table_title">Enter Table Name:</label>
+        <input type="text" id="table_title" name="table_title"><br><br>
+
+        <label for="table_schema_user_defined">Enter Schema Name:</label>
+        <input type="text" id="table_schema_user_defined" name="table_schema_user_defined">
+        <br>
+        <br>
+        
+        <button type="submit">Upload File</button>
+    </form>
+</nav>  -->
